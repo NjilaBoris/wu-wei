@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { ViewTransitions } from "next-view-transitions";
+import ClientLayout from "@/client-layout";
 
 const SpaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk-mono",
@@ -9,7 +11,7 @@ const SpaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "WuWei Studio",
-  description: "Creative Studio MWT Website Template",
+  description: "Creative Studio MWT Website",
 };
 
 export default function RootLayout({
@@ -20,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={` ${SpaceGrotesk.className} antialiased`}>
-        {children}
+        <ViewTransitions>
+          <ClientLayout>{children}</ClientLayout>
+        </ViewTransitions>
       </body>
     </html>
   );
