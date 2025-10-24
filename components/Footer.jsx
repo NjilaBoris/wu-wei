@@ -1,10 +1,11 @@
 "use client";
-import "./Footer.css";
+
 import { useRef } from "react";
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,7 +39,7 @@ const Footer = () => {
         },
       });
     },
-    { scope: footerRef }
+    { scope: footerRef },
   );
 
   return (
@@ -63,40 +64,40 @@ const Footer = () => {
             </a>
           </div>
           <div className="footer-social">
-            <a href="https://www.youtube.com/@codegrid">
+            <Link href="https://www.youtube.com/">
               <div className="footer-text">
                 <div className="footer-text-content">
                   <h2>LinkedIn</h2>
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
           <div className="footer-social">
-            <a href="https://www.youtube.com/@codegrid">
+            <Link href="https://www.youtube.com">
               <div className="footer-text">
                 <div className="footer-text-content">
                   <h2>Behance</h2>
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
           <div className="footer-social">
-            <a href="https://www.youtube.com/@codegrid">
+            <Link href="https://www.youtube.com">
               <div className="footer-text">
                 <div className="footer-text-content">
                   <h2>Instagram</h2>
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
           <div className="footer-social">
-            <a href="https://vimeo.com/codegrid">
+            <Link href="https://vimeo.com">
               <div className="footer-text">
                 <div className="footer-text-content">
                   <h2>Vimeo</h2>
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
