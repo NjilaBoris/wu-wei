@@ -1,5 +1,4 @@
 "use client";
-import "./studio.css";
 import { useRef } from "react";
 
 import gsap from "gsap";
