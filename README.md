@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wu-Wei
+
+A modern web portfolio/site built with Next.js (App Router) and React. It uses Tailwind CSS v4 for styling, GSAP for animations, and Lenis for smooth scrolling. The codebase mixes TypeScript support with predominantly JSX components.
+
+This README documents the stack, requirements, setup, commands, project structure, and outstanding TODOs.
+
+## Overview
+- Framework: Next.js 16 (App Router)
+- UI: React 19
+- Styling: Tailwind CSS v4, PostCSS
+- Animations: GSAP (@gsap/react, ScrollTrigger, CustomEase), Lenis smooth scrolling
+- Icons: lucide-react, react-icons
+- Transitions: next-view-transitions, motion
+- Language: JavaScript/TypeScript (TypeScript config present; many components are .jsx)
+- Linting/Formatting: ESLint 9, eslint-config-next, Prettier
+
+## Requirements
+- Node.js: 18.18+ (recommended 20 LTS or newer)
+  - Note: Exact engines are not pinned in package.json. TODO: Add `engines` field once the team finalizes target Node version.
+- npm (package-lock.json present, indicating npm is the package manager)
 
 ## Getting Started
-
-First, run the development server:
-
+1) Install dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2) Run the development server
+```bash
+npm run dev
+```
+Then open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3) Build for production
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4) Start the production server (after build)
+```bash
+npm run start
+```
 
-## Learn More
+## Scripts
+Defined in package.json:
+- dev: next dev
+- build: next build
+- start: next start
+- lint: eslint
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
+Top-level directories and notable files:
+```
+.
+├─ app/                     # Next.js App Router (routes, pages, layouts)
+│  ├─ page.tsx              # Home route (/)
+│  ├─ work/page.jsx         # /work
+│  ├─ contact/page.jsx      # /contact
+│  ├─ archive/page.jsx      # /archive
+│  ├─ sample-project/page.jsx  # /sample-project
+│  └─ studio/page.jsx       # /studio
+├─ components/              # Reusable UI components (Copy, Menu, etc.)
+├─ contants/                # Project constants (e.g., portfolio.js) [sic]
+├─ lib/                     # Utility modules (if any present)
+├─ public/                  # Static assets (images, icons, etc.)
+├─ client-layout.js         # Client-side layout wrapper with Lenis & Menu
+├─ next.config.ts           # Next.js configuration
+├─ tsconfig.json            # TypeScript configuration
+├─ eslint.config.mjs        # ESLint configuration
+├─ postcss.config.mjs       # PostCSS configuration
+├─ components.json          # Component tooling config (if applicable)
+├─ package.json             # Scripts and dependencies
+├─ package-lock.json        # npm lockfile (indicates npm usage)
+└─ README.md
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Entry Points and Routing
+- Primary entry: app/page.tsx (client component using GSAP animations and a preloader)
+- Additional routes: app/work/page.jsx, app/contact/page.jsx, app/archive/page.jsx, app/sample-project/page.jsx, app/studio/page.jsx
+- Client layout helper: client-layout.js wraps children with ReactLenis and includes the Menu component
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Configuration Notes
+- next.config.ts currently sets `typescript.ignoreBuildErrors: true` to avoid type-check build failures. TODO: Revisit once type coverage improves.
+- Tailwind CSS v4 is configured (postcss + tailwind packages present). Styles are declared in app/globals.css and component-level classNames.
+- ESLint 9 with `eslint-config-next` is available via `npm run lint`.
 
-## Deploy on Vercel
+## Environment Variables
+No environment variables are currently referenced in the repository.
+- TODO: If/when env vars are introduced, document them here and in a `.env.example` file.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Testing
+No test framework or tests were found in this repository.
+- TODO: Add tests (e.g., Jest/Vitest for unit tests, Playwright/Cypress for E2E) and document how to run them.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Development Tips
+- This project uses both .tsx and .jsx files. TypeScript support exists, but many components are plain JSX.
+- Animations rely on GSAP and may access the DOM; ensure components using GSAP are client components ("use client").
+- Smooth scrolling is handled by Lenis (see client-layout.js). Review settings for mobile vs desktop behavior.
+
+## Deployment
+- Any Node-capable host that supports Next.js can be used.
+- Vercel is a common choice for Next.js deployments. See Next.js docs for deployment guides: https://nextjs.org/docs/app/building-your-application/deploying
+
+## License
+No license file detected in the repository.
+- TODO: Add a LICENSE file (e.g., MIT, Apache-2.0) and update this section accordingly.
