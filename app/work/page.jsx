@@ -1,5 +1,5 @@
 "use client";
-import "./work.css";
+
 import { portfolio } from "../../contants/portfolio";
 import { useRef } from "react";
 
