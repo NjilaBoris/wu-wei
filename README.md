@@ -100,6 +100,7 @@ No test framework or tests were found in this repository.
 ## Deployment
 - Any Node-capable host that supports Next.js can be used.
 - Vercel is a common choice for Next.js deployments. See Next.js docs for deployment guides: https://nextjs.org/docs/app/building-your-application/deploying
+- Note on peer dependency conflicts during deploy: This project currently uses React 19 while `next-view-transitions@0.3.4` declares a peer on React ^18. To prevent install failures in CI/CD, an `.npmrc` is included with `legacy-peer-deps=true` (and `strict-peer-deps=false`). Most hosts (including Vercel when using npm) will honor this and proceed with install/build. If you prefer strict installs, either downgrade React to 18.x or remove/replace `next-view-transitions`. 
 
 ## License
 No license file detected in the repository.
