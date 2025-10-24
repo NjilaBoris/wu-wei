@@ -1,5 +1,4 @@
 "use client";
-import "./ProcessCards.css";
 
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";

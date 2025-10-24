@@ -1,5 +1,4 @@
 "use client";
-import "./WhoWeAre.css";
 
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
@@ -70,7 +69,7 @@ const WhoWeAre = () => {
           const adjustedProgress = (progress - 0.3) / (1 - 0.3);
           translateX = -Math.min(
             adjustedProgress * maxTranslateAtTarget,
-            maxTranslateX
+            maxTranslateX,
           );
         }
 
